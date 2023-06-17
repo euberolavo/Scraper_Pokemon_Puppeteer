@@ -1,0 +1,17 @@
+{
+  "name": "scraper-pokemon",
+  "version": "1.0.0",
+  "description": "Scraper feito para o Desafio da BGC Brasil",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Euber Santos",
+  "license": "ISC",
+  "dependencies": {
+    "gitignore": "^0.7.0",
+    "puppeteer": "^20.7.2"
+  }
+}
