@@ -19,13 +19,15 @@ module.exports.runScraper = async (event, context, callback) => {
     const page = await browser.newPage();
     console.log('Começou!');
 
-    console.log('Indo para localização do Pokemon...');
+    await page.setDefaultNavigationTimeout(0);
+
     await page.goto(url);
+    console.log('Indo para localização do Pokemon...');
     
 
     try {
       await page.waitForSelector('._2O--J403t2VqCuF8XJAZLK', {
-        timeout: 5000,
+        timeout: 1000,
       });
       await page.click('._2O--J403t2VqCuF8XJAZLK');
     } catch (error) {
