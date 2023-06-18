@@ -1,0 +1,28 @@
+
+service: scraper-pokemon-puppeteer
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+
+functions:
+  hello2:
+    handler: handler.hello
+    layers: 
+      - arn:aws:lambda:us-east-1:366285556822:layer:chrome:1
+    timeout: 100
+    events:
+      - http:
+          method: GET
+          path: "/"
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+            allowCredentials: false
+
+plugins:
+  - serverless-offline
