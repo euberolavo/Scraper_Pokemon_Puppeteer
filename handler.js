@@ -1,17 +1,17 @@
 const { runScraper } = require('./index');
 
-module.exports.hello = async (event, context, callback) => {
+module.exports.hello = async (event, context) => {
 
   try {
+    
     // Executar a função runScraper e aguardar a conclusão
-    const result = await runScraper(event, context, callback);
-
+    const result = await runScraper(event, context);
+    
     // Construir a resposta com as informações obtidas pelo runScraper
     const response = {
       statusCode: 200,
-      body: JSON.stringify(result),
+      body: result,
     };
-
     return response;
   } catch (error) {
     // Exibir o erro no console do CloudWatch
@@ -21,7 +21,7 @@ module.exports.hello = async (event, context, callback) => {
     const errorResponse = {
       statusCode: 500,
       body: JSON.stringify({
-        error: 'Ocorreu um erro ao processar a solicitação. POKEPEDIA',
+        error: 'Ocorreu um erro ao processar a solicitação.',
       }),
     };
 

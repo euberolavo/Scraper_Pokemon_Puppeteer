@@ -18,10 +18,20 @@ functions:
       - http:
           method: GET
           path: "/"
+          integration: lambda
+          request:
+            template:
+              application/x-www-form-urlencoded: null
           cors:
             origin: '*'
             headers:
               - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - X-Amzn-Trace-Id
             allowCredentials: false
 
 plugins:
