@@ -1,20 +1,18 @@
-// const chrome = require('chrome-aws-lambda');
-const puppeteer = require('puppeteer-core');
+const puppeteer = require('puppeteer-core');//AWS Lambda
+// const puppeteer = require('puppeteer'); //Local
 const chromium = require('@sparticuz/chromium');
 
-const pokemon = 'pikachu';
+
 const url = `https://www.pokemon.com/br/pokedex/`;
 
-const list = [];
+module.exports.runScraper = async (event, context, pokemon) => {
 
-module.exports.runScraper = async (event, context) => {
 
   const browser = await puppeteer.launch({
-    headless: 'new',
-    executablePath: await chromium.executablePath(),
-    defaultViewport: chromium.defaultViewport,
-    args: chromium.args,
-    // userDataDir: '/tmp/puppeteer_dev_chrome_profile',
+    headless: 'new', //Local e AWS Lamda  {quando usar local, pode alterar de 'new' pra false, para o chromium não rodar em background, mas é opcional}
+    executablePath: await chromium.executablePath(),  //AWS Lambda
+    defaultViewport: chromium.defaultViewport,  //AWS Lambda
+    args: chromium.args, //AWS Lambda
   });
 
   try {
@@ -32,13 +30,15 @@ module.exports.runScraper = async (event, context) => {
       elements.map((element) => element.innerText)
     );
 
-    const obj = {};
-    (obj.name = pokemon), (obj.types = types), list.push(obj);
+    const obj = {
+      "name": pokemon,
+      "types": types
+    };
 
     console.log('gotcha!');
     console.log('esse é o seu pokemon');
     // Converte para JSON
-    const json = JSON.stringify(obj);
+    const json = obj;
     console.log(json);
 
     // Fechando o browser

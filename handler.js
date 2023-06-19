@@ -1,12 +1,15 @@
 const { runScraper } = require('./index');
 
 module.exports.hello = async (event, context) => {
-
   try {
-    
+      console.log(event);
+      const pokemon = event.query.pokemon;
+
+      console.log("parametro recebido "+ pokemon);
+
     // Executar a função runScraper e aguardar a conclusão
-    const result = await runScraper(event, context);
-    
+    const result = await runScraper(event, context, pokemon);
+
     // Construir a resposta com as informações obtidas pelo runScraper
     const response = {
       statusCode: 200,
@@ -24,7 +27,6 @@ module.exports.hello = async (event, context) => {
         error: 'Ocorreu um erro ao processar a solicitação.',
       }),
     };
-
 
     return errorResponse;
   }
