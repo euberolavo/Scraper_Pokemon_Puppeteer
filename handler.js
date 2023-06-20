@@ -1,11 +1,9 @@
-const { runScraper } = require('./index');
+const { runScraper } = require("./indexLocal");
+// const { runScraper } = require("./indexAwsLambda");
 
 module.exports.hello = async (event, context) => {
   try {
-      console.log(event);
-      const pokemon = event.query.pokemon;
-
-      console.log("parametro recebido "+ pokemon);
+    const pokemon = event.query.pokemon;
 
     // Executar a função runScraper e aguardar a conclusão
     const result = await runScraper(event, context, pokemon);
@@ -24,7 +22,7 @@ module.exports.hello = async (event, context) => {
     const errorResponse = {
       statusCode: 500,
       body: JSON.stringify({
-        error: 'Ocorreu um erro ao processar a solicitação.',
+        error: "Ocorreu um erro ao processar a solicitação.",
       }),
     };
 

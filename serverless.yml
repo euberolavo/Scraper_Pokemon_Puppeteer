@@ -9,7 +9,7 @@ provider:
 
 
 functions:
-  hello2:
+  hello:
     handler: handler.hello
     layers: 
       - arn:aws:lambda:us-east-1:366285556822:layer:chrome:1

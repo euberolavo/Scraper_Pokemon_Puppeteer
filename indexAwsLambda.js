@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer-core');//AWS Lambda
-// const puppeteer = require('puppeteer'); //Local
+
 const chromium = require('@sparticuz/chromium');
 
 
