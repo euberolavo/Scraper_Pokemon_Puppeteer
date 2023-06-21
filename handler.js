@@ -1,7 +1,7 @@
 // const { runScraper } = require('./indexLocal');
 const { runScraper } = require("./indexAwsLambda");
 
-module.exports.hello = async (event, context) => {
+module.exports.findPokemon = async (event, context) => {
   try {
     const pokemon = event.query.pokemon;
 
