@@ -1,5 +1,5 @@
-const { runScraper } = require("./indexLocal");
-// const { runScraper } = require("./indexAwsLambda");
+// const { runScraper } = require('./indexLocal');
+const { runScraper } = require("./indexAwsLambda");
 
 module.exports.hello = async (event, context) => {
   try {
@@ -22,7 +22,7 @@ module.exports.hello = async (event, context) => {
     const errorResponse = {
       statusCode: 500,
       body: JSON.stringify({
-        error: "Ocorreu um erro ao processar a solicitação.",
+        error: 'Ocorreu um erro ao processar a solicitação.',
       }),
     };
 
